@@ -54,6 +54,9 @@ export function ResumeUpdater({
   const [atsFixes, setAtsFixes] = useState<string[]>([])
   const [interviewFocus, setInterviewFocus] = useState<string[]>([])
   const [error, setError] = useState('')
+  const hireabilityOutOfTen = hireability
+    ? (hireability.score <= 10 ? hireability.score : Number((hireability.score / 10).toFixed(1)))
+    : null
 
   const handleDownloadPdf = () => {
     if (diffs.length === 0) {
@@ -237,7 +240,7 @@ export function ResumeUpdater({
                   Hireability Snapshot
                 </div>
                 <div className="insight-score">
-                  {hireability.score}/100
+                  {hireabilityOutOfTen}/10
                 </div>
               </div>
               <p className="insight-text">{hireability.summary}</p>

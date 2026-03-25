@@ -17,6 +17,12 @@ interface JobResult {
   matchedSkills: string[]
   missingSkills: string[]
   reasoning: string
+  source?: 'adzuna' | 'jsearch'
+}
+
+interface SourceBreakdown {
+  jsearch: number
+  adzuna: number
 }
 
 interface JobProfile {
@@ -35,6 +41,7 @@ export function JobHunt({ resume, setResume }: JobHuntProps) {
   const [loading, setLoading] = useState(false)
   const [results, setResults] = useState<JobResult[]>([])
   const [jobProfile, setJobProfile] = useState<JobProfile | null>(null)
+  const [sourceBreakdown, setSourceBreakdown] = useState<SourceBreakdown | null>(null)
   const [error, setError] = useState('')
   const [location, setLocation] = useState('Bengaluru')
 
@@ -81,9 +88,10 @@ export function JobHunt({ resume, setResume }: JobHuntProps) {
       const data = await response.json()
       setResults(data.results || [])
       setJobProfile(data.jobProfile)
+      setSourceBreakdown(data.sourceBreakdown || null)
 
       if (data.results.length === 0) {
-        setError('No jobs found yet. Try Indian locations like Bengaluru, Hyderabad, Pune, Chennai, Mumbai, or Delhi NCR.')
+        setError('No internships found yet. Try Indian locations like Bengaluru, Hyderabad, Pune, Chennai, Mumbai, or Delhi NCR.')
       }
     } catch (err: any) {
       setError(err.message || 'Failed to search jobs. Please try again.')
@@ -108,9 +116,9 @@ export function JobHunt({ resume, setResume }: JobHuntProps) {
   return (
     <div className="content-wrapper">
       <div className="section">
-        <h2>Find Your Next Role</h2>
+        <h2>Find Your Next Internship</h2>
         <p style={{ color: '#ccc', marginBottom: '30px' }}>
-          AI scans job listings and ranks them by how well they match your skills and
+          AI scans internship listings and ranks them by how well they match your skills and
           experience.
         </p>
 
@@ -135,7 +143,7 @@ export function JobHunt({ resume, setResume }: JobHuntProps) {
         <div style={{ marginBottom: '30px', display: 'flex', gap: '10px' }}>
           <input
             type="text"
-            placeholder="Job location in India (e.g., Bengaluru, Hyderabad, Pune)"
+            placeholder="Internship location in India (e.g., Bengaluru, Hyderabad, Pune)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             style={{
@@ -163,7 +171,7 @@ export function JobHunt({ resume, setResume }: JobHuntProps) {
               transition: 'background 0.3s',
             }}
           >
-            {loading ? 'Searching...' : 'Search Jobs'}
+            {loading ? 'Searching...' : 'Search Internships'}
           </button>
         </div>
 
@@ -212,8 +220,13 @@ export function JobHunt({ resume, setResume }: JobHuntProps) {
         {results.length > 0 && (
           <div>
             <h3 style={{ marginBottom: '20px', marginTop: '30px' }}>
-              {results.length} Jobs Found
+              {results.length} Internships Found
             </h3>
+            {sourceBreakdown && (
+              <p style={{ marginTop: '-10px', marginBottom: '16px', color: '#aaa', fontSize: '12px' }}>
+                Source mix: {sourceBreakdown.jsearch} from JSearch, {sourceBreakdown.adzuna} from Adzuna
+              </p>
+            )}
 
             {results.map((job) => (
               <div
@@ -239,6 +252,20 @@ export function JobHunt({ resume, setResume }: JobHuntProps) {
                     <h3 style={{ margin: '0 0 5px 0' }}>{job.title}</h3>
                     <p style={{ margin: '0', color: '#999', fontSize: '14px' }}>
                       {job.company} • {job.location}
+                      {job.source && (
+                        <span
+                          style={{
+                            marginLeft: '8px',
+                            padding: '2px 8px',
+                            borderRadius: '999px',
+                            border: '1px solid rgba(255,255,255,0.2)',
+                            fontSize: '11px',
+                            color: '#ddd',
+                          }}
+                        >
+                          {job.source === 'jsearch' ? 'JSearch' : 'Adzuna'}
+                        </span>
+                      )}
                     </p>
                   </div>
 
