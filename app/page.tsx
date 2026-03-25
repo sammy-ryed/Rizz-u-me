@@ -5,6 +5,7 @@ import { ResumeUpdater } from '@/components/pages/ResumeUpdater'
 import { Roadmap } from '@/components/pages/Roadmap'
 import { ResumeRoast } from '@/components/pages/ResumeRoast'
 import { InterviewSimulator } from '@/components/pages/InterviewSimulator'
+import { JobHunt } from '@/components/pages/JobHunt'
 
 export default function Home() {
   const [resume, setResume] = useState('')
@@ -75,6 +76,11 @@ export default function Home() {
       {/* INTERVIEW */}
       <div id="interview" className="page">
         <InterviewSimulator resume={resume} jobDescription={jobDescription} />
+      </div>
+
+      {/* JOB HUNT */}
+      <div id="job-hunt" className="page">
+        <JobHunt resume={resume} setResume={setResume} />
       </div>
     </>
   )

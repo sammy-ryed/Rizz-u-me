@@ -1,6 +1,6 @@
 'use client'
 
-type Page = 'updater' | 'roadmap' | 'roast' | 'interview'
+type Page = 'updater' | 'roadmap' | 'roast' | 'interview' | 'job-hunt'
 
 interface NavigationProps {
   currentPage: Page
@@ -10,6 +10,7 @@ interface NavigationProps {
 export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   const navItems: { id: Page; label: string }[] = [
     { id: 'updater', label: 'Resume Updater' },
+    { id: 'job-hunt', label: 'Job Hunt' },
     { id: 'roadmap', label: 'Roadmap' },
     { id: 'roast', label: 'Roast Me' },
     { id: 'interview', label: 'Interview Sim' },

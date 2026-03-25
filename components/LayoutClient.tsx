@@ -105,7 +105,14 @@ export function LayoutClient({ children }: LayoutClientProps) {
       document.getElementById(pageId)?.classList.add('active')
 
       document.querySelectorAll('.nav-btn').forEach((btn) => btn.classList.remove('active'))
-      const pageMap: { [key: string]: number } = { landing: 0, updater: 1, roadmap: 2, roast: 3, interview: 4 }
+      const pageMap: { [key: string]: number } = {
+        landing: 0,
+        updater: 1,
+        'job-hunt': 2,
+        roadmap: 3,
+        roast: 4,
+        interview: 5,
+      }
       if (pageMap[pageId] !== undefined) {
         const navBtns = document.querySelectorAll('.nav-btn')
         navBtns[pageMap[pageId]]?.classList.add('active')
@@ -155,9 +162,17 @@ export function LayoutClient({ children }: LayoutClientProps) {
           </div>
           <div
             className="nav-btn"
-            onClick={() => (window as any).goTo('roadmap')}
+            onClick={() => (window as any).goTo('job-hunt')}
           >
             <div className="nav-num">03</div>
+            <div className="nav-label">Job Hunt</div>
+            <div className="nav-dot"></div>
+          </div>
+          <div
+            className="nav-btn"
+            onClick={() => (window as any).goTo('roadmap')}
+          >
+            <div className="nav-num">04</div>
             <div className="nav-label">Plan</div>
             <div className="nav-dot"></div>
           </div>
@@ -165,7 +180,7 @@ export function LayoutClient({ children }: LayoutClientProps) {
             className="nav-btn"
             onClick={() => (window as any).goTo('roast')}
           >
-            <div className="nav-num">04</div>
+            <div className="nav-num">05</div>
             <div className="nav-label">Roast</div>
             <div className="nav-dot"></div>
           </div>
@@ -173,7 +188,7 @@ export function LayoutClient({ children }: LayoutClientProps) {
             className="nav-btn"
             onClick={() => (window as any).goTo('interview')}
           >
-            <div className="nav-num">05</div>
+            <div className="nav-num">06</div>
             <div className="nav-label">Interview</div>
             <div className="nav-dot"></div>
           </div>
