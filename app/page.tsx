@@ -6,6 +6,7 @@ import { Roadmap } from '@/components/pages/Roadmap'
 import { ResumeRoast } from '@/components/pages/ResumeRoast'
 import { InterviewSimulator } from '@/components/pages/InterviewSimulator'
 import { JobHunt } from '@/components/pages/JobHunt'
+import { ThinkLab } from '../components/pages/ThinkLab'
 
 export default function Home() {
   const [resume, setResume] = useState('')
@@ -71,6 +72,11 @@ export default function Home() {
       {/* ROAST */}
       <div id="roast" className="page">
         <ResumeRoast resume={resume} setResume={setResume} />
+      </div>
+
+      {/* THINK */}
+      <div id="think" className="page">
+        <ThinkLab resume={resume} jobDescription={jobDescription} />
       </div>
 
       {/* INTERVIEW */}

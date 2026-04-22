@@ -712,6 +712,7 @@ select option {
 }
 
 input[type="range"] {
+  appearance: none;
   -webkit-appearance: none;
   width: 100%;
   height: 2px;
@@ -869,6 +870,315 @@ input[type="range"]::-webkit-slider-thumb {
   grid-template-columns: 1fr auto;
   gap: 12px;
   align-items: flex-end;
+}
+
+/* ─── THINK LAB ─── */
+.think-top-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.think-panel {
+  background: rgba(242, 237, 230, 0.02);
+  border: 1px solid rgba(242, 237, 230, 0.08);
+  padding: 22px;
+}
+
+.think-actions-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.think-context-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 12px;
+  border: 1px solid rgba(242, 237, 230, 0.1);
+  margin-top: 2px;
+}
+.think-context-pill::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.think-rationale {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--yellow);
+  background: rgba(240, 198, 25, 0.08);
+  color: rgba(242, 237, 230, 0.75);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.think-rationale span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-right: 6px;
+}
+
+.think-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.think-metric-card {
+  background: rgba(242, 237, 230, 0.03);
+  border: 1px solid rgba(242, 237, 230, 0.08);
+  padding: 14px;
+}
+
+.think-metric-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.think-metric-value {
+  font-family: var(--syne);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--paper);
+}
+
+.think-history-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 14px;
+  padding-right: 4px;
+}
+.think-history-wrap::-webkit-scrollbar {
+  width: 3px;
+}
+.think-history-wrap::-webkit-scrollbar-thumb {
+  background: rgba(242, 237, 230, 0.1);
+}
+
+.think-history-empty {
+  padding: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(242, 237, 230, 0.45);
+  border: 1px dashed rgba(242, 237, 230, 0.15);
+}
+
+.think-history-row {
+  background: rgba(242, 237, 230, 0.02);
+  border: 1px solid rgba(242, 237, 230, 0.08);
+  padding: 10px 12px;
+}
+
+.think-history-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 1.2px;
+  color: rgba(242, 237, 230, 0.6);
+}
+
+.think-history-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(242, 237, 230, 0.08);
+}
+.think-history-bar > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), #22c55e);
+}
+
+.think-quiz-panel {
+  margin-bottom: 20px;
+}
+
+.think-quiz-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.think-question-progress {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.think-difficulty-pill {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid;
+}
+.think-difficulty-pill.think-easy {
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.5);
+  background: rgba(34, 197, 94, 0.08);
+}
+.think-difficulty-pill.think-medium {
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.08);
+}
+.think-difficulty-pill.think-hard {
+  color: var(--red);
+  border-color: rgba(214, 58, 26, 0.5);
+  background: rgba(214, 58, 26, 0.08);
+}
+
+.think-question {
+  font-family: var(--syne);
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.think-skill-line {
+  font-size: 12px;
+  color: rgba(242, 237, 230, 0.45);
+  margin-bottom: 16px;
+}
+
+.think-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.think-option {
+  background: rgba(242, 237, 230, 0.03);
+  border: 1px solid rgba(242, 237, 230, 0.12);
+  color: var(--paper);
+  text-align: left;
+  padding: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s, background 0.2s;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.think-option:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(242, 237, 230, 0.24);
+}
+.think-option:disabled {
+  cursor: default;
+}
+.think-option.selected {
+  border-color: var(--blue);
+  background: rgba(26, 58, 214, 0.12);
+}
+.think-option.correct {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+}
+.think-option.wrong {
+  border-color: var(--red);
+  background: rgba(214, 58, 26, 0.12);
+}
+
+.think-option-key {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(242, 237, 230, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 8px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.think-feedback {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid;
+}
+.think-feedback.good {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.08);
+}
+.think-feedback.bad {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.think-feedback-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.think-feedback-copy {
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(242, 237, 230, 0.75);
+}
+
+.think-round-summary {
+  font-size: 12px;
+  color: rgba(242, 237, 230, 0.75);
+}
+
+@media (max-width: 1100px) {
+  .think-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .think-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .think-panel {
+    padding: 16px;
+  }
+
+  .think-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .think-question {
+    font-size: 24px;
+  }
 }
 
 /* ─── LOADING ─── */

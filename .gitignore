@@ -27,6 +27,7 @@ lerna-debug.log*
 # Environment variables
 .env*
 !.env.example
+!.env.exampal
 
 # IDE / Editor
 .vscode/

@@ -111,7 +111,8 @@ export function LayoutClient({ children }: LayoutClientProps) {
         'job-hunt': 2,
         roadmap: 3,
         roast: 4,
-        interview: 5,
+        think: 5,
+        interview: 6,
       }
       if (pageMap[pageId] !== undefined) {
         const navBtns = document.querySelectorAll('.nav-btn')
@@ -186,9 +187,17 @@ export function LayoutClient({ children }: LayoutClientProps) {
           </div>
           <div
             className="nav-btn"
-            onClick={() => (window as any).goTo('interview')}
+            onClick={() => (window as any).goTo('think')}
           >
             <div className="nav-num">06</div>
+            <div className="nav-label">Think</div>
+            <div className="nav-dot"></div>
+          </div>
+          <div
+            className="nav-btn"
+            onClick={() => (window as any).goTo('interview')}
+          >
+            <div className="nav-num">07</div>
             <div className="nav-label">Interview</div>
             <div className="nav-dot"></div>
           </div>
